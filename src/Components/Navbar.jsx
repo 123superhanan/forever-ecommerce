@@ -1,12 +1,17 @@
 import React ,{useState} from 'react'
 import {assets} from '../assets/frontend_assets/assets'
 import { NavLink, Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { shopContext } from '../Context/ShopContext'
 
 
 const Navbar = () => {
 
-    const [visible , setVisible ] = useState(false)
-
+    const [visible , setVisible ] = useState(false);
+    
+    // FUNCTIONALITY TO SHOW SEARCH BAR 
+    const {setShowSearch} = useContext(shopContext);
+    
 
   return (
 
@@ -40,7 +45,7 @@ const Navbar = () => {
 
 
                     <div className='flex items-center gap-6'>
-                        <img src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
+                        <img onClick={() => setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
                             
 
                     <div className=' group relative'>

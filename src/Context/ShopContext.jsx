@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { products } from "../assets/frontend_assets/assets";
 
 export const shopContext = createContext();
@@ -10,7 +10,8 @@ const currency = "$";
 const delivery_fee = "10";
 const stock = "Buy Now";
 const category ="buy it now"
-
+const [search , setSearch] = useState('');
+const [showSearch, setShowSearch] = useState(false);
 
 
 
@@ -24,7 +25,11 @@ const category ="buy it now"
         currency,
         delivery_fee,
         stock,
-        category
+        category,
+        search,
+        setSearch,
+        showSearch,
+        setShowSearch
     }
 
 

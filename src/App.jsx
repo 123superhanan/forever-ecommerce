@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Routes, Route } from 'react-router-dom'
 import Home from "./Pages/Home.jsx"
 import Collection from "./Pages/Collection.jsx"
@@ -11,6 +11,7 @@ import PlaceOrder from "./Pages/PlaceOrder.jsx"
 import Product from "./Pages/Product.jsx"
 import Navbar from "./Components/Navbar.jsx"
 import Footer from "./Components/Footer.jsx"
+import SearchBar from './Components/SearchBar.jsx'
 
 
 
@@ -22,7 +23,7 @@ const App = () => {
     <div className='px-4  sm:px-[5vw] md:px-[7vw] lg-px-[9vw]'>
 
 <Navbar />
-      
+<SearchBar />
 <Routes>
     <Route path='/'  element={<Home/>}  />
     <Route path='/about'  element={<About/>}  />

@@ -4,6 +4,7 @@ import { assets } from '../assets/frontend_assets/assets';
 import Title from '../Components/Title';
 import ProductItem from '../Components/ProductItem';
 
+
 const Collection = () => {
   // Accessing the products from the shopContext
   const { products } = useContext(shopContext);
