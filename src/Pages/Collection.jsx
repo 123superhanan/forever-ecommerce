@@ -6,8 +6,8 @@ import ProductItem from '../Components/ProductItem';
 
 
 const Collection = () => {
-  // Accessing the products from the shopContext
-  const { products } = useContext(shopContext);
+  // Accessing the products from the shopContext & search functionality ...
+  const { products, search, showSearch } = useContext(shopContext);
 
   // State to toggle the filter dropdown visibility
   const [showFilter, setShowFilter] = useState(false);
@@ -59,6 +59,9 @@ const Collection = () => {
 
     let productCopy = products.slice();
 
+    if(showSearch && search){
+      productCopy = productCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
+    }
     if (category.length > 0) {
       productCopy = productCopy.filter(item => category.includes(item.category));
     }
@@ -71,7 +74,7 @@ const Collection = () => {
 //executing the applyFilter function whenever changes
 useEffect( () =>{
   applyFilter();
-},[category , subCategory])
+},[category , subCategory, search, showSearch])
 
 //sorting the products according to the prices of the categories
 const sortProducts = () => {
