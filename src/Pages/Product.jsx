@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { shopContext } from '../Context/ShopContext';
 import { assets } from '../assets/frontend_assets/assets';
+import RelatedProducts from '../Components/RelatedProducts';
 
 const Product = () => {
   // to get location of product by router
@@ -66,7 +67,7 @@ const Product = () => {
                     <img src={assets.star_dull_icon} alt="" className="w-3.5" />
                     <p className='pl-2'>(122)</p>
                 </div>
-                <p className='mt-5 text-3xl font-medium text-red-500'>{currency}{productData.price}</p>
+                <p className='mt-5 text-3xl font-medium text-red-500 hover:text-green-700'>{currency}{productData.price}</p>
                 <p className='mt-5 text-gray-500 md:w-4/5 '>{productData.description}</p>
                 <div className='flex flex-col gap-4 my-8'>
                       <p>SELECT SIZE</p>
@@ -78,11 +79,34 @@ const Product = () => {
                           }
                       </div>
                 </div>
-                <button className='bg-black text-white px-8 py-3 text:sm active:bg-g'>ADD TO CART</button>
+                <button className='bg-black text-white px-8 py-3 text:sm active:bg-green-700'>ADD TO CART</button>
+                <hr className='mt-8 sm:w-4/5' />
+                      <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
+                           <p>100% Original product.</p>
+                           <p>Cash on delivery is available on this product.</p>
+                           <p>Easy return and exchange policy within 7 days.</p>
+                      </div>
               </div>
-
         </div>
-      </div>
+
+        {/* -------Description & Review Section------ */}
+        <div className='mt-20'>
+                <div className='flex'>
+                        <b className='border px-5 py-3  text-sm'>Description</b>
+                        <p className='border px-5 py-3  text-sm-500 text-red-500'>Review <span className='text-green-500'>(122)</span> </p>
+                </div>    
+                <div className='flex flex-col gap-4 border px-6 py-6 text-md text-gray-500'>
+                  <p>An e-commerce website is an online platform that facilitates the buying and selling of products or services over the internet. It serves as a virtual marketplace where businesses and individuals can showcase their products, interact with customers, and conduct transactions without the need for a physical presence. E-commerce websites have gained immense popularity due to their convenience, accessibility, and the global reach they offer.
+                </p>
+                <p>E-commerce websites typically display products or services along with detailed descriptions, images, prices, and any available variations (e.g., sizes, colors). Each product usually has its own dedicated page with relevant information.</p>
+            </div>      
+        </div>
+        {/* --------diplay related products-------- */}
+
+          <RelatedProducts category={productData.category} subCategory={productData.subCategory}/>
+
+
+</div>
     </>
   ) : <div className='opacity-0'></div>;
 }
