@@ -29,7 +29,7 @@ const Hero = () => {
 
  <img 
   src={assets.hero_img} 
-  className="w-full  sm:w-1/2" 
+  className="w-full  sm:w-1/2 cursor-not-allowed" 
   alt="Hero Image" 
 />
 
