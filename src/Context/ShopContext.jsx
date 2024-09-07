@@ -60,8 +60,11 @@ const ShopContextProvider = (props) => {
   };
 
   //update cart by changing quantity or delete product
-  const updateQuantity = async (itemId, size) => {
+  const updateQuantity = async (itemId, size, quantity) => {
 
+    let cartData = structuredClone(cartItem);
+    cartData[itemId][size] = quantity
+    setCartItem(cartData);
   }
 
 
@@ -81,6 +84,7 @@ const ShopContextProvider = (props) => {
     cartItem,
     addtoCart,
     getCartCount,
+    updateQuantity
   };
 
   return (

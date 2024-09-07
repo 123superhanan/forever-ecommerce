@@ -6,7 +6,7 @@ import { assets } from '../assets/frontend_assets/assets';
 
 const Cart = () => {
 
-  const {products, currency, cartItem} = useContext(shopContext);
+  const {products, currency, cartItem, updateQuantity} = useContext(shopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect (() => {
@@ -55,8 +55,10 @@ const Cart = () => {
                               </div>
                           </div>
                       </div>
-                    <input className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1 bg-slate-50 text-black ' type="number" min={1} defaultValue={item.quantity} />
-                    <img className='w-4 cursor-pointer' src={assets.bin_icon} alt="" />
+                    <input   onChange={(e) => e.target.value === '' || e.target.value === "0" ? null : updateQuantity(item._id, item.sizes, Number(e.target.value))} className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1 bg-slate-50 text-black ' type="number" min={1} defaultValue={item.quantity} />
+
+
+                    <img onClick={() => updateQuantity(item._id, item.sizes, 0)} className='w-4 cursor-pointer  ' src={assets.bin_icon} alt="" />
                  </div>
                 )
               })
