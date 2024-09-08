@@ -8,7 +8,7 @@ export const shopContext = createContext();
 const ShopContextProvider = (props) => {
   // Global variables
   const currency = "€";
-  const delivery_fee = "10";
+  const delivery_fee = 10;
   const stock = "Buy Now";
   const category = "buy it now";
 
@@ -67,8 +67,23 @@ const ShopContextProvider = (props) => {
     setCartItem(cartData);
   }
 
-
-
+  //functionality for total calculation 
+  const getCartAmount = ()  => {
+    let totalAmount = 0;
+    for(const items in cartItem) {
+      let itemInfo = products.find((product) => product._id === items);
+      for(const item in cartItem[items]){
+        try {
+            if(cartItem[items][item] > 0){
+              totalAmount += itemInfo.price * cartItem[items][item]
+            }
+        } catch (error) {
+          toast.error(error);
+        }
+      }
+  }
+  return totalAmount
+}
 
   // Context value
   const value = {
@@ -84,7 +99,8 @@ const ShopContextProvider = (props) => {
     cartItem,
     addtoCart,
     getCartCount,
-    updateQuantity
+    updateQuantity,
+    getCartAmount
   };
 
   return (
