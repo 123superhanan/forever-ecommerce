@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Title from '../Components/Title'
 import CartTotal from '../Components/CartTotal';
 import { assets } from '../assets/frontend_assets/assets';
+import { shopContext } from '../Context/ShopContext';
 
 const PlaceOrder = () => {
 
   const [method, setMethod] = useState('cod');
-
+  const {navigate} = useContext(shopContext)
 
 return (
 
@@ -22,20 +23,20 @@ return (
                           {/* form for delivery information on left side */}
     
     <div className='flex gap-3'>
-      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Enter First Name' />
-      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Enter Last Name' />
+      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Enter First Name' required/>
+      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Enter Last Name' required/>
     </div>
-    <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="email" placeholder='Enter Your Email' />
-    <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Street' />
+    <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="email" placeholder='Enter Your Email' required/>
+    <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Street' required/>
     <div className='flex gap-3'>
-      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='City' />
+      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='City' required/>
       <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='State' />
     </div>
     <div className='flex gap-3'>
-      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="number" placeholder='Zip Code ' />
-      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Country' />
+      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="number" placeholder='Zip Code ' required/>
+      <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Country' required/>
     </div>
-    <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="number" placeholder='Phone number ' />
+    <input className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="number" placeholder='Phone number ' required />
     </div> 
     
     {/* -------------- Right Side --------------- */}
@@ -65,7 +66,7 @@ return (
                 </div>
           </div>
               <div className='w-full text-end mt-8'>
-                <button className='bg-black text-white text-sm px-16 py-3 active:bg-green-600'>PLACE ORDER</button>
+                <button onClick={() => navigate('/order')} className='bg-black text-white text-sm px-16 py-3 active:bg-green-600'>PLACE ORDER</button>
             </div>
         </div> 
       </div>
