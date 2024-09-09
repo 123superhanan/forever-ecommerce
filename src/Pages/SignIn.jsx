@@ -10,7 +10,7 @@ const SignIn = () => {
   return (
 
     <>
-      <from onSubmit={OnSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800'>
+      <form onSubmit={OnSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800'>
         <div className='inline-flex items-center gap-2 mb-2 mt-10'>
         <p className='prata-regular text-3xl'>{currentState}</p>
         <hr className='border-none h-[1.5px] w-8 bg-gray-800'/>
@@ -29,7 +29,7 @@ const SignIn = () => {
 
         </div>
         <button className='bg-black text-white font-light text-sm mt-4 px-8 py-2 active:bg-gray-600'>{currentState === "log in" ? 'Sign In': 'Sign Up'}</button>
-      </from>
+      </form>
     </>
 
   )
